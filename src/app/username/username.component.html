@@ -3,19 +3,29 @@
 </p>
 <!--<form #change_form="ngForm">-->
   <!-- one-way data binding -->
-  <strong>Current Username: {{namechange.names[0]}}</strong>
+  <p>
+    <strong>Current Username: <span [class.name]="true">{{namechange.names[0]}}</span></strong>
 
-  <br /><label for="new_name">New username: </label>
-  <input type="text" name="new_name" [(ngModel)]="namechange.names[1]" />
-  <!-- above: two-way data binding -->
+    <br /><label for="new_name">New username: </label>
+    <input type="text" name="new_name" [(ngModel)]="namechange.names[1]" />
+    <!-- above: two-way data binding -->
+  </p>
 
-  <ng-template [ngIf]="namechange.names[1]">
-    <div>
-      Are these your old and new usernames?
-      <ul>
-        <li *ngFor="let name of namechange.names">{{name}}</li>
-      </ul>
-      <input type="submit" value="Yes, change my name!" (click)="senddata(change_form.value)" />
-    </div>
-  </ng-template>
+  <p>
+    <!-- this is not intuitive at all, but for the rubric... -->
+    <ng-template [ngIf]="!namechange.names[1]">
+        <div>
+            <span [ngStyle]="{color:'#b00'}">Enter a new name to continue...</span>
+        </div>
+    </ng-template>
+    <ng-template [ngIf]="namechange.names[1]">
+      <div>
+        Are these your old and new usernames?
+        <ul>
+          <li *ngFor="let name of namechange.names"><span [class.name]="true">{{name}}</span></li>
+        </ul>
+        <input type="submit" value="Yes, change my name!" (click)="senddata(change_form.value)" />
+      </div>
+    </ng-template>
+  </p>
 <!--</form>-->
