@@ -14,11 +14,10 @@ export class UsernameComponent implements OnInit {
   ngOnInit() {
   }
 
-  content: String = "Change your username:";
+  content: String = "Fill out the following form to change your username:";
 
   namechange: Username = {
-    current_name: "boop",
-    new_name: "",
+    names: ["boop", ""], // original, new
   };
 
 }

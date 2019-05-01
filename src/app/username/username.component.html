@@ -1,13 +1,21 @@
 <p>
   {{content}}
 </p>
-<p>
-  <label for="username">Current Username: </label>{{namechange.current_name}}<br />
+<!--<form #change_form="ngForm">-->
+  <!-- one-way data binding -->
+  <strong>Current Username: {{namechange.names[0]}}</strong>
 
-  <label for="new_name">New username: </label>
-  <input type="text" name="new_name" [(ngModel)]="namechange.new_name" placeholder="new username here" /><br />
+  <br /><label for="new_name">New username: </label>
+  <input type="text" name="new_name" [(ngModel)]="namechange.names[1]" />
+  <!-- above: two-way data binding -->
 
-  <label for="confirm_new_name">Confirm new name: </label>
-  <input type="text" name="type it exactly the same" />
-</p>
-<p>Your username will be changed from {{namechange.currentname}} to {{namechange.new_name}}.</p>
+  <ng-template [ngIf]="namechange.names[1]">
+    <div>
+      Are these your old and new usernames?
+      <ul>
+        <li *ngFor="let name of namechange.names">{{name}}</li>
+      </ul>
+      <input type="submit" value="Yes, change my name!" (click)="senddata(change_form.value)" />
+    </div>
+  </ng-template>
+<!--</form>-->
