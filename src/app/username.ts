@@ -1,3 +1,4 @@
 export class Username {
-    instructions: String;
+    current_name: String;
+    new_name: String;
   }

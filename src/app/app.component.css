@@ -1,0 +1,364 @@
+/* FROM MYO-Stationery 2019-04-30 */
+
+
+/* some CSS used for navigation taken from the personal website of Sarah Meng (currently http://www.people.virginia.edu/~shm3px/index.html), one of the creators */
+
+/* help from these two pages for flexbox stuff:
+ * https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ * https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+ */
+
+/* key colors:
+ * #039 a dark blue, for text
+ * #def a light blue, main bg color
+ * #adf a light blue but darker/more saturated than #def, main nav color
+ *
+ * #039 against both #adf and #def satisfy AAA accessibility recommendations (and the AA requirement, of course) according to Colorable:
+ * http://jxnblk.com/colorable/demos/text/?background=%23adf&foreground=%23039
+ */
+
+/* background and body stuff */
+
+body {
+    /* to make nav and hr touch page sides */
+    margin: 0;
+    background-color: #def;
+    font-family: Verdana, sans-serif;
+}
+
+a {
+    color: #039;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* nav stuff */
+
+header {
+    /* stick it to the top */
+    position: fixed;
+    z-index: 50;
+    width: 100%;
+    background-color: #adf;
+}
+
+header * {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    width: 100%;
+    line-height: 2rem;
+}
+
+nav a {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+    min-width: 5rem;
+}
+
+nav a:hover {
+    color: #adf;
+    background-color: #039;
+    text-decoration: none;
+}
+
+.functionlinks {
+    float: right;
+}
+
+#logo {
+    font-style: italic;
+}
+
+#avatar {
+    height: 1.25rem;
+    padding: 0 0.5rem;
+    vertical-align: text-bottom;
+    /* there's something weird about vertical-align: middle; */
+}
+
+
+/* body stuff */
+
+main {
+    padding: 3rem 1rem 1rem 1rem;
+    /* need as much space as the navbar takes (2rem) + nice padding (1rem)*/
+}
+
+.breadcrumbs {
+    display: block;
+}
+
+.success {
+    color: #090;
+    font-weight: bold;
+}
+
+.error {
+    color: #b00;
+    font-weight: bold;
+}
+
+
+/* index.html */
+
+#starsoftheshow {
+    text-align: center;
+}
+
+#starsoftheshow > a {
+    padding: 2rem 5rem;
+    font-size: 2rem;
+}
+
+
+/* browse.html */
+
+#browse-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    max-height: calc(100vh - 4rem);
+    /* 4rem: 2 from nav, 2 from main padding */
+}
+
+#browse-wrapper > * {
+    overflow: auto;
+}
+
+#filterlist {
+    max-width: 20vw;
+}
+
+#stationerydisplay {
+    flex-grow: 1;
+
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+
+/* print.html */
+
+#printpreview {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 4rem);
+    /* 4rem: 2 from nav, 2 from main padding */
+}
+
+#printpreview-window-wrapper {
+    flex-grow: 1;
+    /* take up as much space as possible */
+
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 4rem - 3rem);
+    /* 4rem: 2 from nav, 2 from main padding;
+     * 3rem: 1 from breadcrumbs, 1ish from buttons, rest is just additional padding now */
+}
+
+#printpreview-window {
+    flex-grow: 1;
+    overflow: auto;
+    margin: 1rem 0;
+}
+
+.printpreview-item {
+    display: inline-block;
+}
+
+.printpreview-item img {
+    display: block;
+}
+
+.choicebuttons {
+    align-items: center;
+}
+
+
+/* create.html */
+
+#canvas {
+    float: left;
+    width: 400px;
+    height: 300px;
+    /* margin: 0px 10px; */
+    /* padding: 10px; */
+    border: 1px solid black;
+    overflow: hidden;
+    background-color: white;
+}
+
+.float {
+    float: left;
+    /* display: table-cell; */
+
+}
+
+#newId {
+    position: relative;
+}
+
+/* 
+#newId:active {
+    
+} */
+
+#newId:hover {
+    cursor: pointer;
+    opacity: .75;
+}
+
+.img1 {
+    width: 50px;
+    height: 50px;
+    /* user-select: none; */
+    margin: 15px 0px 0px 15px;
+    float: left;
+}
+
+.tab {
+    width: 300px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    margin: 0px 10px;
+    /* float: left; */
+
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    width: 300px;
+    display: none;
+    /* padding: 6px 12px; */
+    border: 1px solid #ccc;
+    border-top: none;
+    overflow-y: scroll;
+    height: 270px;
+    margin: 0px 10px;
+}
+.size50px{
+    height: 50px;
+    width: 50px;
+}
+
+.hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+/* narrow screens */
+
+@media (max-width: 40rem) {
+
+
+    /* browse.html */
+    #browse-wrapper {
+        flex-direction: column;
+        max-height: none;
+    }
+
+    #browse-wrapper > * {
+        overflow: auto;
+        max-height: 100vh;
+    }
+
+    #filterlist {
+        max-width: 100%;
+    }
+}
+
+/* the nav needs 25rem to be on one line */
+/* would rather have main {} below triggered early rather than late
+ * because triggering late means the nav covers the breadcrumbs */
+
+@media (max-width: 25rem) {
+    .functionlinks {
+        float: none;
+    }
+
+    main {
+        padding-top: 5rem;
+        /* on narrower screens, the nav is split into two lines */
+    }
+}
+
+/* wip... for short screens */
+@media screen and (max-height: 300px) {
+
+    .choicebuttons {
+        position: relative;
+    }
+
+    /* print.html */
+
+    #printpreview {
+        min-height: 100vh;
+        /* 4rem: 2 from nav, 2 from main padding */
+    }
+
+    #printpreview-window-wrapper {
+        max-height: none;
+    }
+
+    #printpreview-window {
+        min-height: 300px;
+    }
+
+    /* browse.html */
+    #browse-wrapper > * {
+        overflow: auto;
+        max-height: none;
+        height: 600px;
+    }
+}
+
+/* print.html */
+@media print {
+    html * {
+        visibility: hidden;
+    }
+
+    #printpreview-window-wrapper img {
+        visibility: visible;
+    }
+
+    /* doesn't hide the non-selected stationery */
+}

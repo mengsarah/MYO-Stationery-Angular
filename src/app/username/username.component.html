@@ -1,6 +1,13 @@
 <p>
-  {{content.instructions}}
-  <label for="username">Username: </label><input type="text" name="old_name" />
-  <label for="new_name">New username: </label><input type="text" name="new_name" />
-  <label for="confirm_new_name">Confirm new name: </label><input type="text" name="confirm_new_name" />
+  {{content}}
 </p>
+<p>
+  <label for="username">Current Username: </label>{{namechange.current_name}}<br />
+
+  <label for="new_name">New username: </label>
+  <input type="text" name="new_name" [(ngModel)]="namechange.new_name" placeholder="new username here" /><br />
+
+  <label for="confirm_new_name">Confirm new name: </label>
+  <input type="text" name="type it exactly the same" />
+</p>
+<p>Your username will be changed from {{namechange.currentname}} to {{namechange.new_name}}.</p>

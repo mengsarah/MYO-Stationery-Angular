@@ -14,8 +14,11 @@ export class UsernameComponent implements OnInit {
   ngOnInit() {
   }
 
-  content: Username = {
-    instructions: "Change your username:",
+  content: String = "Change your username:";
+
+  namechange: Username = {
+    current_name: "boop",
+    new_name: "",
   };
 
 }
